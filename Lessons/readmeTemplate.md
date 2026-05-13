@@ -7,11 +7,12 @@ breif description
 
 ## Materials Needed
 * 1x Arduino Board
+* 1x USB Cable
+*    Jumper Wires
 * 1x Breadboard
 * 1x 5mm LED
 * 1x 330 Ohm Resistor
-* 2x Jumper Wires
-* 1x USB Cable
+
 
 ## Component Review
 

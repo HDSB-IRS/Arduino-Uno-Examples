@@ -50,7 +50,8 @@ Open the Arduino IDE, delete any existing code, and copy the following into the 
 
 ```cpp
 // Create a variable to store the pin number we are using
-int ledPin = 8;
+// Make it a constant so that it does not change 
+const int ledPin = 8;
 
 void setup() {
   // Configure pin 8 as an output
@@ -69,6 +70,7 @@ void loop() {
 
 ### Variables
 At the very top of the sketch, before `setup()`, we added: `int ledPin = 8;`
+* **const**: Makes this variable a **constant**.  It can never be changed once it's declared.
 * **`int`**: Stands for integer. It tells the Arduino we are storing a whole number.
 * **`ledPin`**: This is the name we chose for our variable. We could have named it anything, but giving it a descriptive name makes the code easier to read.
 * **`= 8`**: We assign the value 8 to this variable because we plugged our wire into Digital Pin 8. 
