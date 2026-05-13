@@ -14,7 +14,7 @@ In our sketch, we will start with the LED in the Red color state, then fade to G
 * 1x Breadboard
 * 1x USB Cable
 * Wires
-* 1x RGB LED
+* 3x RGB LED
 * 1x 330 Ohm Resistor
  
 
