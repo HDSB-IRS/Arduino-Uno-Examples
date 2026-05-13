@@ -82,9 +82,9 @@ Open the Arduino IDE, delete any existing code, and copy the following into the 
 
 ```cpp
 // Define Pin Constants
-const blueLED 3;
-const greenLED 5;
-const redLED 6;
+const int blueLED = 3;
+const int greenLED = 5;
+const int redLED = 6;
 
 // Define variables
 int redValue;
