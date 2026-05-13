@@ -155,15 +155,15 @@ The code above will use FOR loops to cycle through the colors.
 * The last FOR loop will go from BLUE to RED.
 
 
-### 1. Variables and Pin Setup
+### Variables and Pin Setup
 * **Pin Assignments:** The program starts by defining the specific Arduino pins used for the LED. It assigns pin 3 to the blue LED, pin 5 to the green LED, and pin 6 to the red LED. These pins are declared to be constants as they should never change.
 * **Fade Speed:** A `delayTime` variable is set to `10`, representing a 10-millisecond pause between brightness changes, which dictates how fast the colors fade.
 
-### 2. Initial Configuration (`setup`)
+### void setup()
 * In the `setup()` block, the assigned pins are configured to send signals out (`OUTPUT`). 
 * The program initializes the LED by turning the red light completely on (`HIGH`) while keeping the green and blue lights off (`LOW`).
 
-### 3. The Main Cycle (`loop`)
+### void loop()
 The `loop()` function is where the fading animation happens. It relies on the `analogWrite()` function, which uses Pulse Width Modulation (PWM) to send values between `0` (completely off) and `255` (completely on) to adjust brightness. The loop is divided into three distinct phases:
 
 * **Phase 1 (Red to Green):** A `for` loop gradually decreases the `redValue` while simultaneously increasing the `greenValue` by 1 at each step. This fades the red light out while bringing the green light to full brightness.

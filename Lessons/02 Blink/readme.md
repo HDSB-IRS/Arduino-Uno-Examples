@@ -38,11 +38,11 @@ void loop() {
 
 An Arduino program is always divided into two main parts:
 
-### 1. void setup()
+### void setup()
 Everything between the curly braces `{ }` of `setup()` runs only **one time** when the Arduino is turned on. We use this section to set up our pins and initialize sensors.
 * **`pinMode(pin, mode)`**: This command tells the Arduino how to treat a specific pin. We are telling it to treat `LED_BUILTIN` as an `OUTPUT` because we want to send power out to the LED. 
 
-### 2. void loop()
+### void loop()
 Everything between the curly braces `{ }` of `loop()` runs continuously from top to bottom, forever. This is where the main logic of your program lives.
 * **`digitalWrite(pin, value)`**: This command changes the voltage on a digital pin. Sending a `HIGH` signal sends 5 Volts (turning the LED on). Sending a `LOW` signal sends 0 Volts (turning the LED off).
 * **`delay(ms)`**: Microcontrollers run extremely fast! If we didn't pause the program, the LED would flash on and off millions of times a second, and it would just look continuously dim to human eyes. The `delay()` command pauses the code for a specific number of milliseconds. 1000 milliseconds = 1 second.

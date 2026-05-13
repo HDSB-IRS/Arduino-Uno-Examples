@@ -1,26 +1,31 @@
+/*
+ * TEJ Tutorial: Pull-Up vs Pull-Down
+ * This code turns an LED on with one button logic 
+ * and off with another.
+ */
 
+const int ledPin = 13;  // Onboard LED
+const int btnOn = 2;    // Pull-down button
+const int btnOff = 3;   // Pull-up button
 
-int ledPin = 5;
-int buttonApin = 9;
-int buttonBpin = 8;
-
-byte leds = 0;
-
-void setup() 
-{
+void setup() {
   pinMode(ledPin, OUTPUT);
-  pinMode(buttonApin, INPUT_PULLUP);  
-  pinMode(buttonBpin, INPUT_PULLUP);  
+  pinMode(btnOn, INPUT);
+  pinMode(btnOff, INPUT);
 }
 
-void loop() 
-{
-  if (digitalRead(buttonApin) == LOW)
-  {
+void loop() {
+  // Read the state of the buttons
+  int onState = digitalRead(btnOn);
+  int offState = digitalRead(btnOff);
+
+  // Button A (Pull-down) is HIGH when pressed
+  if (onState == HIGH) {
     digitalWrite(ledPin, HIGH);
   }
-  if (digitalRead(buttonBpin) == LOW)
-  {
+
+  // Button B (Pull-up) is LOW when pressed
+  if (offState == LOW) {
     digitalWrite(ledPin, LOW);
   }
 }
