@@ -14,7 +14,7 @@ void setup() {
 void loop() {
   // Read the state of the tilt sensor
   int digitalVal = digitalRead(tiltPin);
-  Serial.println("Read Value: " + digitalVal);
+  Serial.println("Read Value: " + String(digitalVal));
 
 
   // If the switch is open (un-tilted), the pull-up resistor makes it HIGH
