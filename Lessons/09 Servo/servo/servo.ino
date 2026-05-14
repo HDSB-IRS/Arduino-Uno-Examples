@@ -1,24 +1,27 @@
-
+// Include the built-in Servo library
 #include <Servo.h>
 
-Servo myservo;  // create servo object to control a servo
-// twelve servo objects can be created on most boards
+// Create a servo object to control our SG90
+Servo myServo;
 
-int pos = 0;    // variable to store the servo position
+const int servoPin = 9;  // The digital pin the servo signal wire is connected to
+int angle = 0;           // Variable to store the current servo position
 
 void setup() {
-  myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+  // Attach the servo object to the specified pin
+  myServo.attach(servoPin);
 }
 
 void loop() {
-  for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
-    // in steps of 1 degree
-    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
+  // Sweep from 0 degrees to 180 degrees
+  for (angle = 0; angle <= 180; angle += 1) {
+    myServo.write(angle);  // Tell servo to go to the position in variable 'angle'
+    delay(15);             // Wait 15ms for the servo to reach the position
   }
-  for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
+
+  // Sweep from 180 degrees back to 0 degrees
+  for (angle = 180; angle >= 0; angle -= 1) {
+    myServo.write(angle);
+    delay(15);
   }
 }
-
