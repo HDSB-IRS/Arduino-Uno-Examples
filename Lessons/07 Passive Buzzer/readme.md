@@ -74,4 +74,4 @@ void loop() {
     * The first number is the pin we are using (`buzzerPin` or 8).
     * The second number is the pitch in Hertz. Changing this number changes the note you hear.
 * `noTone(pin);`: This function tells the Arduino to stop generating the sound wave. If you don't use `noTone()`, the buzzer will keep playing the last note forever.
-* **`delay(50);`:** This creates a tiny sliver of silence between notes. Without it, the notes slur together and sound like one continuous, shifting beep.
+* `delay(50);`: This creates a tiny sliver of silence between notes. Without it, the notes slur together and sound like one continuous, shifting beep.
