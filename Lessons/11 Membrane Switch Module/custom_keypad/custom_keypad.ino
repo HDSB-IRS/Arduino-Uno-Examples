@@ -1,38 +1,51 @@
+// Include the newly installed Adafruit Keypad library
+#include "Adafruit_Keypad.h"
 
-/* @file CustomKeypad.pde
-|| @version 1.0
-|| @author Alexander Brevig
-|| @contact alexanderbrevig@gmail.com
-||
-|| @description
-|| | Demonstrates changing the keypad size and key values.
-|| #
-*/
-#include <Keypad.h>
+// Define the matrix dimensions
+const byte ROWS = 4;  // 4 rows
+const byte COLS = 3;  // 3 columns
 
-const byte ROWS = 4; //four rows
-const byte COLS = 4; //four columns
-//define the cymbols on the buttons of the keypads
-char hexaKeys[ROWS][COLS] = {
-  {'1','2','3','A'},
-  {'4','5','6','B'},
-  {'7','8','9','C'},
-  {'*','0','#','D'}
+// Define the physical layout of the buttons
+char keys[ROWS][COLS] = {
+  { '1', '2', '3' },
+  { '4', '5', '6' },
+  { '7', '8', '9' },
+  { '*', '0', '#' }
 };
-byte rowPins[ROWS] = {9, 8, 7, 6}; //connect to the row pinouts of the keypad
-byte colPins[COLS] = {5, 4, 3, 2}; //connect to the column pinouts of the keypad
 
-//initialize an instance of class NewKeypad
-Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); 
+// Define which Arduino pins are connected to the rows and columns
+byte rowPins[ROWS] = { 9, 8, 7, 6 };  // Row 1 to Row 4
+byte colPins[COLS] = { 5, 4, 3 };     // Col 1 to Col 3
 
-void setup(){
+// Initialize an instance of the keypad
+Adafruit_Keypad customKeypad = Adafruit_Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
+
+void setup() {
   Serial.begin(9600);
+
+  // Start the keypad
+  customKeypad.begin();
+  Serial.println("Keypad Initialized. Press any key!");
 }
-  
-void loop(){
-  char customKey = customKeypad.getKey();
-  
-  if (customKey){
-    Serial.println(customKey);
+
+void loop() {
+  // Update the keypad state (must be called repeatedly)
+  customKeypad.tick();
+
+  // Check if there is a new keypad event (button pressed or released)
+  while (customKeypad.available()) {
+    keypadEvent e = customKeypad.read();
+
+    // Print the character of the key
+    Serial.print((char)e.bit.KEY);
+
+    // Check if it was pressed or released and print the action
+    if (e.bit.EVENT == KEY_JUST_PRESSED) {
+      Serial.println(" pressed");
+    } else if (e.bit.EVENT == KEY_JUST_RELEASED) {
+      Serial.println(" released");
+    }
   }
+
+  delay(10);  // Small delay for stability
 }
