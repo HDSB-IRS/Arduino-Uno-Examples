@@ -1,4 +1,4 @@
-# Servo Motors
+# Tutorial: Servo Motors
 
 In this lesson, you will learn how to connect and control an SG90 micro servo motor using your Arduino. We will use the built-in Arduino Servo library to sweep the motor arm back and forth.
 
