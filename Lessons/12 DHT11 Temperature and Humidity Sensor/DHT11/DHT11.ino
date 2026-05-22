@@ -1,45 +1,50 @@
+// Include the DHT library
+#include "DHT.h"
 
+// The pin the DHT11 data pin is connected to
+const int dhtPin = 2;     
 
-#include <SimpleDHT.h>
+// The type of DHT sensor we are using
+const int dhtType = DHT11;   
 
-// for DHT11, 
-//      VCC: 5V or 3V
-//      GND: GND
-//      DATA: 2
-int pinDHT11 = 2;
-SimpleDHT11 dht11;
+// Initialize the DHT sensor object
+DHT dht(dhtPin, dhtType);
 
 void setup() {
+  // Start the serial monitor
   Serial.begin(9600);
+  Serial.println("DHT11 Sensor Test!");
+
+  // Start the DHT sensor
+  dht.begin();
 }
 
 void loop() {
-  // start working...
-  Serial.println("=================================");
-  Serial.println("Sample DHT11...");
+  // The DHT11 is a slow sensor. Wait 2 seconds between measurements.
+  delay(2000);
+
+  // Read humidity as a percentage
+  float humidity = dht.readHumidity();
   
-  // read with raw sample data.
-  byte temperature = 0;
-  byte humidity = 0;
-  byte data[40] = {0};
-  if (dht11.read(pinDHT11, &temperature, &humidity, data)) {
-    Serial.print("Read DHT11 failed");
+  // Read temperature as Celsius
+  float tempC = dht.readTemperature();
+  
+  // Read temperature as Fahrenheit (isFahrenheit = true)
+  float tempF = dht.readTemperature(true);
+
+  // Check if any reads failed and exit early (to try again)
+  if (isnan(humidity) || isnan(tempC) || isnan(tempF)) {
+    Serial.println("Failed to read from DHT sensor!");
     return;
   }
-  
-  Serial.print("Sample RAW Bits: ");
-  for (int i = 0; i < 40; i++) {
-    Serial.print((int)data[i]);
-    if (i > 0 && ((i + 1) % 4) == 0) {
-      Serial.print(' ');
-    }
-  }
-  Serial.println("");
-  
-  Serial.print("Sample OK: ");
-  Serial.print((int)temperature); Serial.print(" *C, ");
-  Serial.print((int)humidity); Serial.println(" %");
-  
-  // DHT11 sampling rate is 1HZ.
-  delay(1000);
+
+  // Print the results to the Serial Monitor
+  Serial.print("Humidity: ");
+  Serial.print(humidity);
+  Serial.print("%  |  ");
+  Serial.print("Temperature: ");
+  Serial.print(tempC);
+  Serial.print("°C / ");
+  Serial.print(tempF);
+  Serial.println("°F");
 }

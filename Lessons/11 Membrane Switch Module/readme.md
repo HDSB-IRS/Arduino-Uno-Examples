@@ -18,6 +18,8 @@ In this lesson, you will learn how to connect and program a 3x4 membrane matrix 
 A membrane matrix keypad allows you to add user input to your projects, like a security code or a calculator interface. The Adafruit 419 is a 3x4 matrix, meaning it has 12 buttons total (0-9, *, and #). 
 
 If every button had its own dedicated pin, you would need 12 digital pins on your Arduino just to read this keypad! Instead, the buttons are arranged in a "matrix" of rows and columns. When you press a button, it connects one specific row to one specific column. By rapidly pulsing the rows and listening on the columns, the Arduino can figure out exactly which button is pressed using only 7 pins (4 rows + 3 columns).
+
+You can find much more information about this keypad from here: https://learn.adafruit.com/matrix-keypad
 <!-- 
 ![Schematic Diagram](raspberry_pi_3844_diagram.jpg) 
 -->
