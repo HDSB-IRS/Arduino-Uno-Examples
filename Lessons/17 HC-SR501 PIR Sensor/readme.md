@@ -117,4 +117,4 @@ void loop() {
 * **State Change Tracking (`pirState`)**: Notice how the code checks `if (pirState == LOW)` *inside* the main `if (val == HIGH)` block. The Arduino loop runs thousands of times a second. If we just wrote `Serial.println("Motion detected!")`, the Serial Monitor would be flooded with thousands of identical messages. By tracking the `pirState`, we only print the message exactly when the state *changes* from no motion to motion, and vice versa.
 
 ## Blocking Code
-The example given above is **blocking**, which means the entire arduino program waits until the PIR sensor is ready.  See [Lesson 12 DHT11](/Lessons/12%20DHT11%20Temperature%20and%20Humidity%20Sensor) for an example of how to write non-blocking code.
+The example given above is **blocking**, which means the entire arduino program waits until the PIR sensor is ready.  See [Lesson 12 DHT11](/Lessons/12%20DHT11%20Temperature%20and%20Humidity%20Sensor/#example-2-advanced-code-non-blocking-with-millis) for an example of how to write non-blocking code.
