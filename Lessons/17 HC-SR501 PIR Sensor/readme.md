@@ -2,7 +2,7 @@
 
 In this lesson, you will learn how to connect and program an HC-SR501 Passive Infrared (PIR) sensor to detect motion. We will also cover how to fine-tune the sensor's hardware using its built-in adjustment dials and trigger jumpers.
 
-![Schematic Diagram](PIR_top.png)
+![PIR Top](PIR_top.jpg)
 
 
 ## Objectives
@@ -26,7 +26,7 @@ The HC-SR501 is a Passive Infrared (PIR) sensor. Everything emits a certain amou
 
 ### Hardware Adjustments: Dials and Jumpers
 What makes the HC-SR501 exceptionally useful is that you can adjust its behavior mechanically without changing your Arduino code. If you flip the module over, you will see two orange potentiometers (dials) and a set of three pins with a jumper cap.
-![Schematic Diagram](PIR_bottom.png)
+![PIR Bottom](PIR_bottom.png)
 
 
 **1. The Adjustment Dials (Potentiometers)**
@@ -117,4 +117,4 @@ void loop() {
 * **State Change Tracking (`pirState`)**: Notice how the code checks `if (pirState == LOW)` *inside* the main `if (val == HIGH)` block. The Arduino loop runs thousands of times a second. If we just wrote `Serial.println("Motion detected!")`, the Serial Monitor would be flooded with thousands of identical messages. By tracking the `pirState`, we only print the message exactly when the state *changes* from no motion to motion, and vice versa.
 
 ## Blocking Code
-The example given above is **blocking**, which means the entire arduino program waits until the PIR sensor is ready.  See [Lesson 12 DHT11](/12%20DHT11%20Temperature%20and%20Humidity%20Sensor/) for an example of how to write non-blocking code.
+The example given above is **blocking**, which means the entire arduino program waits until the PIR sensor is ready.  See [Lesson 12 DHT11](/Lessons/12%20DHT11%20Temperature%20and%20Humidity%20Sensor) for an example of how to write non-blocking code.
